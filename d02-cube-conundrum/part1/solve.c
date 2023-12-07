@@ -7,10 +7,10 @@
 #include <math.h>
 
 #define BUFFER_SIZE 256
-#define INPUT_FILENAME "./input.txt"
+#define INPUT_FILENAME "../input.txt"
 #define OUTPUT_FILENAME "./output.txt"
 
-#define GAME_ID_LENGTH 5
+#define GAME_ID_MIN_LENGTH 5
 #define RED_CUBES_LIMIT 12
 #define GREEN_CUBES_LIMIT 13
 #define BLUE_CUBES_LIMIT 14
@@ -48,11 +48,10 @@ int main() {
 }
 
 bool parse_line(const char *buffer) {
-  char cubes_number_array[8];
   uint16_t buffer_length = strlen(buffer),
-           i             = GAME_ID_LENGTH;
+           i             = GAME_ID_MIN_LENGTH;
 
-  // Skip game identificator.
+  // Skip a game identificator.
   while (isdigit(buffer[i])) i++;
   i += 2;
 
